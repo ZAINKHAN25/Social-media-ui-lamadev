@@ -45,6 +45,9 @@
     display: flex;
     margin-left: 20px;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .shareopttion{
@@ -56,5 +59,35 @@
 
 .shareicon{
     font-size: 18px;
-    margin-right: 3px;
+    margin-right: 5px;
+}
+
+.redclr{
+    color: red;
+}
+
+.blueclr{
+    color: blue;
+}
+
+.greenclr{
+    color: gray
+}
+
+.golderclr{
+    color: gold;
+}
+
+.shareoptiontext{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sharebutton{
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight:700;
+    background-color: green;
+    margin-right: 20px;
 }

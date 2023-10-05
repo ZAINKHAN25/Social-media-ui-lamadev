@@ -12,22 +12,23 @@ export default function Share() {
                 <div className="sharebottom">
                     <div className="shareoptions">
                         <div className="shareopttion">
-                            <i className="fa-solid fa-images shareicon"></i>
+                            <i className="fa-solid fa-images shareicon redclr"></i>
                             <span className='shareoptiontext'>Photo or Video</span>
                         </div>
                         <div className="shareopttion">
-                            <i class="fa-solid fa-tag shareicon"></i>
-                            <span className='shareoptiontext'>Photo or Video</span>
+                            <i class="fa-solid fa-tag shareicon blueclr"></i>
+                            <span className='shareoptiontext'>Tag</span>
                         </div>
                         <div className="shareopttion">
-                            <i class="fa-solid fa-location-dot shareicon"></i>
-                            <span className='shareoptiontext'>Photo or Video</span>
+                            <i class="fa-solid fa-location-dot shareicon greenclr"></i>
+                            <span className='shareoptiontext'>Location</span>
                         </div>
                         <div className="shareopttion">
-                            <i class="fa-solid fa-face-smile-beam shareicon"></i>
-                            <span className='shareoptiontext'>Photo or Video</span>
+                            <i class="fa-solid fa-face-smile-beam shareicon golderclr"></i>
+                            <span className='shareoptiontext'>Feelings</span>
                         </div>
                     </div>
+                    <button className="sharebutton">Share</button>
                 </div>
             </div>
         </div>
