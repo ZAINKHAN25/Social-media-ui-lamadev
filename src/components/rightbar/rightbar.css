@@ -48,8 +48,6 @@
     align-items: start;
 }
 
-/* this is commit */
-
 .rightbarprofileimg {
     width: 40px;
     height: 40px;
@@ -58,7 +56,7 @@
     z-index: -1;
 }
 
-.rightbaronline{
+.rightbaronline {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -70,12 +68,57 @@
     z-index: -1;
 }
 
-.rightbarusername{
+.rightbarusername {
     font-weight: 800;
 }
 
-.rightbartitle{
+.rightbartitle {
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 20px;
+}
+
+.rightbartitle {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.rightbarfollowingimg {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.rightbarinfo {
+    margin-bottom: 30px;
+}
+
+.rightbarinfoitem {
+    margin-bottom: 10px;
+}
+
+.rightbarinfokey {
+    font-weight: 700;
+    margin-right: 15px;
+    color: #555;
+}
+
+.rightbarinfovalue {
+    font-weight: 400;
+}
+
+.rightbarfollowings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: space-between;
+}
+
+.rightbarfollowing {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin-right: 5px;
 }
