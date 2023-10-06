@@ -8,7 +8,7 @@ export default function Topbar() {
             </div>
             <div className="topbarCenter">
                 <div className="searchbardiv">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <i className="fa-solid fa-magnifying-glass search-icon"></i>
                     <input placeholder='Search for Posts, Friends or video' className="searchInput" />
                 </div>
             </div>
@@ -19,15 +19,15 @@ export default function Topbar() {
                 </div>
                 <div className="topbaricons">
                     <div className="topbariconitem">
-                        <i class="fa-solid fa-user"></i>
+                        <i className="fa-solid fa-user"></i>
                         <span className="topbariconbatch">1</span>
                     </div>
                     <div className="topbariconitem">
-                        <i class="fa-solid fa-message"></i>
+                        <i className="fa-solid fa-message"></i>
                         <span className="topbariconbatch">2</span>
                     </div>
                     <div className="topbariconitem">
-                        <i class="fa-solid fa-bell"></i>
+                        <i className="fa-solid fa-bell"></i>
                         <span className="topbariconbatch">13</span>
                     </div>
                 </div>
