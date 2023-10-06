@@ -1,3 +1,18 @@
 .rightbar{
     flex: 3.5;
 }
+
+.rightbarwrapper{
+    padding: 20px 20px 0 0;
+}
+
+.birthdayimg{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.birthdaytext{
+    font-weight: 300;
+    font-size: 15px;
+}
