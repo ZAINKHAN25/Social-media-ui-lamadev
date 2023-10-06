@@ -1,8 +1,17 @@
 import './post.css'
-import {Users} from '../../dummyData.js'
+import { Users } from '../../dummyData.js'
+import { useState } from 'react'
 
 
-export default function Post({post}) {
+export default function Post({ post }) {
+    const [like, setlike] = useState(post.like)
+    const [isliked, setisliked] = useState(false)
+
+    function likeHandeler(){
+        setlike(isliked ? like -1: like + 1 )
+        setisliked(!isliked)
+    }
+
     return (
         <div className='post'>
             <div className="postwrapper">
@@ -24,9 +33,9 @@ export default function Post({post}) {
                 </div>
                 <div className="postbottom">
                     <div className="postbottomleft">
-                        <i className="fa-solid fa-thumbs-up likeicon"></i>
-                        <i className="fa-solid fa-heart hearticon"></i>
-                        <span className="postlikecounter">{post.like} people likes it</span>
+                        <i className="fa-solid fa-thumbs-up likeicon" onClick={likeHandeler}></i>
+                        <i className="fa-solid fa-heart hearticon" onClick={likeHandeler}></i>
+                        <span className="postlikecounter">{like} people likes it</span>
                     </div>
                     <div className="postbottomright">
                         <span className="postcommenttext">
