@@ -1,4 +1,7 @@
 import './rightbar.css'
+import {Users} from '../../dummyData.js'
+import Online from '../online/Online.jsx'
+
 
 export default function Rightbar(){
     return (
@@ -13,76 +16,10 @@ export default function Rightbar(){
                 <img src="https://static.vecteezy.com/system/resources/thumbnails/013/057/701/small/ad-initial-letter-gold-calligraphic-feminine-floral-hand-drawn-heraldic-monogram-antique-vintage-style-luxury-logo-design-premium-vector.jpg" className='rightbarad' alt="" />
                 <h4 className="rightbartitle">Online Friends</h4>
                 <ul className="rightbarfriendlist">
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
-                    <li className="rightbarfriend">
-                        <div className="rightbarprofileimgcontainer">
-                            <img className='rightbarprofileimg' src="https://t4.ftcdn.net/jpg/04/76/04/99/360_F_476049927_ogzHW1dr6WBAg4Vlaz76NThq0k0bF17y.jpg" alt="" />
-                            <div className="rightbaronline"></div>
-                        </div>
-                        <span className="rightbarusername">Ismail</span>
-                    </li>
+                    {Users.map(u => (
+                        <Online key={u.id} user={u}/>
+                    ))}
+                    
                 </ul>
             </div>
         </div>

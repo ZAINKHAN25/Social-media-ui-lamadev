@@ -1,4 +1,6 @@
-import './sidebar.css'
+import Closefriends from '../closeFriends/Closefriends'
+import './sidebar.css';
+import {Users} from '../../dummyData.js'
 
 export default function Sidebar() {
     return (
@@ -41,30 +43,9 @@ export default function Sidebar() {
                 <button className="sidebarbutton">Show More</button>
                 <hr className='sidebarhr' />
                 <ul className="sidebarfriendlist">
-                    <li className="sidebarfriend">
-                        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="" className="sidebarfrndimg" />
-                        <span className='sidebarfrndname'>Talha</span>
-                    </li>
-                    <li className="sidebarfriend">
-                        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="" className="sidebarfrndimg" />
-                        <span className='sidebarfrndname'>Talha</span>
-                    </li>
-                    <li className="sidebarfriend">
-                        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="" className="sidebarfrndimg" />
-                        <span className='sidebarfrndname'>Talha</span>
-                    </li>
-                    <li className="sidebarfriend">
-                        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="" className="sidebarfrndimg" />
-                        <span className='sidebarfrndname'>Talha</span>
-                    </li>
-                    <li className="sidebarfriend">
-                        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="" className="sidebarfrndimg" />
-                        <span className='sidebarfrndname'>Talha</span>
-                    </li>
-                    <li className="sidebarfriend">
-                        <img src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" alt="" className="sidebarfrndimg" />
-                        <span className='sidebarfrndname'>Talha</span>
-                    </li>
+                    {Users.map(u => (
+                        <Closefriends key={u.uid} user={u}/>
+                    ))}
                 </ul>
             </div>
         </div>
