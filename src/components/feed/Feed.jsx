@@ -10,8 +10,9 @@ export default function Feed(){
 
     useEffect(()=>{
         async function getdata(){
-            const res = await axios.get('http://localhost:8080/posts/v1/timeline/64ef8a6cd458a56a1dc8cb6b')
+            const res = await axios.get('https://social-media-app-with-mongo-db.vercel.app/posts/v1/')
             setposts(res.data);
+            console.log(res.data);
         }
         getdata()
     },[])
