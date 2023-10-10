@@ -1,10 +1,13 @@
 import './topbar.css'
+import {Link} from 'react-router-dom'
 
 export default function Topbar() {
     return (
         <div className='topbarcontainer'>
             <div className="topbarLeft">
+                <Link to={'/'} style={{textDecoration: 'none'}}>
                 <span className="logo">Zainsocial</span>
+                </Link>
             </div>
             <div className="topbarCenter">
                 <div className="searchbardiv">
