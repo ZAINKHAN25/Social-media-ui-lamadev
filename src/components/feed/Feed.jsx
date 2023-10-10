@@ -12,7 +12,6 @@ export default function Feed(){
         async function getdata(){
             const res = await axios.get('https://social-media-app-with-mongo-db.vercel.app/posts/v1/')
             setposts(res.data);
-            console.log(res.data);
         }
         getdata()
     },[])

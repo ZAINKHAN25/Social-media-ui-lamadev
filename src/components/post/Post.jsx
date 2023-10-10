@@ -8,10 +8,26 @@ export default function Post({ post }) {
     const [isliked, setisliked] = useState(false)
     const [user, setUser] = useState({})
 
-    function likeHandeler() {
-        setlike(isliked ? like - 1 : like + 1)
-        setisliked(!isliked)
-    }
+    async function likeHandler() {
+        try {
+            console.log(post._id);
+          const response = await axios.put(`https://social-media-app-with-mongo-db.vercel.app/posts/v1/${post._id}/like`, {
+            userId: '64ef8a6cd458a56a1dc8cb6b', // Replace with the actual user ID
+          });
+      
+          // Check the response to determine whether the post was liked or disliked
+          if (response.data === "The post has been liked") {
+            setlike(like + 1); // Increment the like count
+            setisliked(true); // Set isliked to true
+          } else if (response.data === "The post has been disliked") {
+            setlike(like - 1); // Decrement the like count
+            setisliked(false); // Set isliked to false
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      
 
     useEffect(() => {
         async function fetchuser() {
@@ -44,8 +60,8 @@ export default function Post({ post }) {
                 </div>
                 <div className="postbottom">
                     <div className="postbottomleft">
-                        <i className="fa-solid fa-thumbs-up likeicon" onClick={likeHandeler}></i>
-                        <i className="fa-solid fa-heart hearticon" onClick={likeHandeler}></i>
+                        <i className="fa-solid fa-thumbs-up likeicon" onClick={likeHandler}></i>
+                        <i className="fa-solid fa-heart hearticon" onClick={likeHandler}></i>
                         <span className="postlikecounter">{like} people likes it</span>
                     </div>
                     <div className="postbottomright">
