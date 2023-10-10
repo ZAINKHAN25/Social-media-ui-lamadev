@@ -1,12 +1,37 @@
+import { useState } from 'react'
+import axios from 'axios'
 import './share.css'
 
 export default function Share() {
+    let [issharebuttontrue,setissharebtntrue] = useState(false);
+    let [inputtxt,setinputtxt] = useState('');
+    async function posthandler(){
+        try {
+            const response = await axios.post(`https://social-media-app-with-mongo-db.vercel.app/posts/v1/`, {
+              userId: '64ef8a6cd458a56a1dc8cb6b', 
+              desc: inputtxt
+            }).then(res => {
+                console.log(res)
+                window.location.reload();
+            })
+          } catch (error) {
+            console.error(error);
+          } 
+    }
+
     return (
         <div className='share'>
             <div className="sharewrapper">
                 <div className="sharetop">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl33XheDto8Y20nOIAA74-rYqO-T9y4eEloyZ2Tzea&s" alt="" className="shareprofileimg" />
-                    <input placeholder="What's in your mind Zain?" className='shareinput' />
+                    <input placeholder="What's in your mind Zain?" onChange={(e)=>{
+                        if(e.target.value === ''){
+                            setissharebtntrue(false)
+                        }else{
+                            setissharebtntrue(true);
+                            setinputtxt(e.target.value)
+                        }
+                    }} className='shareinput' />
                 </div>
                 <hr className="sharehr" />
                 <div className="sharebottom">
@@ -28,7 +53,7 @@ export default function Share() {
                             <span className='shareoptiontext'>Feelings</span>
                         </div>
                     </div>
-                    <button className="sharebutton">Share</button>
+                    <button onClick={posthandler} className={`sharebutton ${issharebuttontrue && 'hovervalue'}`}>Share</button>
                 </div>
             </div>
         </div>

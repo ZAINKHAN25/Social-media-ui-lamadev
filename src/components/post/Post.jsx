@@ -10,7 +10,6 @@ export default function Post({ post }) {
 
     async function likeHandler() {
         try {
-            console.log(post._id);
           const response = await axios.put(`https://social-media-app-with-mongo-db.vercel.app/posts/v1/${post._id}/like`, {
             userId: '64ef8a6cd458a56a1dc8cb6b', // Replace with the actual user ID
           });
