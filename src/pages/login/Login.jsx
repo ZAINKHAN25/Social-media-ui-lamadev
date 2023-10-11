@@ -8,8 +8,8 @@ export default function Login() {
 
     let [loginemail, setloginemail] = useState('')
     let [loginpassword, setloginpassword] = useState('')
-    let [messagepara, setmessagepara] = useState('')
-    let [colorofmessage, setcolorofmessage] = useState('red')
+    let [errorpara, seterrorpara] = useState('')
+    let [congragulation, setcongragulation] = useState('')
 
 
     async function loginhandler() {
@@ -19,19 +19,16 @@ export default function Login() {
                 password: loginpassword
             }).then(res => {
                 console.log(res);
-                setcolorofmessage('green')
-                setmessagepara("Account Sign in Succesfully done")
+                setcongragulation("Account Sign in Succesfully done")
                 setTimeout(() => navigate('/'), 3000)
             }).catch(err => {
-                setcolorofmessage('red')
-                setcolorofmessage("Your password or email is wrong")
-                setTimeout(() => setmessagepara(""), 3000)
+                seterrorpara("Your password or email is wrong")
+                setTimeout(() => seterrorpara(""), 3000)
             })
         } catch (error) {
             console.error(error);
-            setcolorofmessage('red')
-            setcolorofmessage("Your password or email is wrong")
-            setTimeout(() => setmessagepara(""), 3000)
+            seterrorpara("Your password or email is wrong")
+            setTimeout(() => seterrorpara(""), 3000)
         }
     }
 
@@ -50,7 +47,8 @@ export default function Login() {
                         <input onChange={(e) => setloginemail(e.target.value)} placeholder="Email" className="logininput" />
                         <input type='password' onChange={(e) => setloginpassword(e.target.value)} placeholder="Password" className="logininput" />
                         <button onClick={loginhandler} className='loginbutton'>Log In</button>
-                        <p className='messageinput' color={{ color: colorofmessage }}>{messagepara}</p>
+                        <p className='erorpara' style={{ color: "red" }}>{errorpara}</p>
+                        <p className='messageinput' style={{ color: "green" }}>{congragulation}</p>
                         <span className="loginforgot">Forgot Password?</span>
                         <button onClick={() => navigate('/register')} className="loginregisterbutton">Create a new Account</button>
                     </div>
