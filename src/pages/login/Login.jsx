@@ -1,6 +1,8 @@
 import './login.css'
+import { useNavigate } from "react-router-dom";
 
 export default function Login(){
+    const navigate = useNavigate();
     return (
         <div className='login'>
             <div className="loginwrapper">
@@ -17,7 +19,7 @@ export default function Login(){
                         <input placeholder="Password" className="logininput" />
                         <button className='loginbutton'>Log In</button>
                         <span className="loginforgot">Forgot Password?</span>
-                        <button className="loginregisterbutton">Create a new Account</button>
+                        <button onClick={()=>navigate('/register')} className="loginregisterbutton">Create a new Account</button>
                     </div>
                 </div>
             </div>
