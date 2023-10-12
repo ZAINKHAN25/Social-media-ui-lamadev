@@ -13,8 +13,7 @@ export default function Post({ post }) {
           const response = await axios.put(`https://social-media-app-with-mongo-db.vercel.app/posts/v1/${post._id}/like`, {
             userId: '64ef8a6cd458a56a1dc8cb6b', // Replace with the actual user ID
           });
-      
-          // Check the response to determine whether the post was liked or disliked
+    
           if (response.data === "The post has been liked") {
             setlike(like + 1); // Increment the like count
             setisliked(true); // Set isliked to true
