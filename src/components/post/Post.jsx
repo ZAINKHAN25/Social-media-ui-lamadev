@@ -9,17 +9,18 @@ export default function Post({ post }) {
     const [user, setUser] = useState({})
 
     async function likeHandler() {
+        const loginperson = JSON.parse(localStorage.getItem("loginperson"));
         try {
           const response = await axios.put(`https://social-media-app-with-mongo-db.vercel.app/posts/v1/${post._id}/like`, {
-            userId: '64ef8a6cd458a56a1dc8cb6b', // Replace with the actual user ID
+            userId: loginperson,
           });
     
           if (response.data === "The post has been liked") {
-            setlike(like + 1); // Increment the like count
-            setisliked(true); // Set isliked to true
+            setlike(like + 1); 
+            setisliked(true); 
           } else if (response.data === "The post has been disliked") {
-            setlike(like - 1); // Decrement the like count
-            setisliked(false); // Set isliked to false
+            setlike(like - 1); 
+            setisliked(false); 
           }
         } catch (error) {
           console.error(error);
@@ -29,8 +30,7 @@ export default function Post({ post }) {
 
     useEffect(() => {
         async function fetchuser() {
-            const res = await axios.get(`https://social-media-app-with-mongo-db.vercel.app/user/v1/${post.userId
-                }`).then(res => setUser(res.data))
+            const res = await axios.get(`https://social-media-app-with-mongo-db.vercel.app/user/v1/${post.userId}`).then(res => setUser(res.data))
                 .catch(err => console.error(err))
             
         }

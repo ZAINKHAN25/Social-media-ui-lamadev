@@ -3,12 +3,24 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 
+import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+
 
 import './profile.css'
 
 export default function Profile() {
+    const loginperson = JSON.parse(localStorage.getItem("loginperson"));
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (loginperson === null) {
+            navigate('/login');
+        }
+    }, [loginperson]);
+
     return (
-        <div>
+        <>
             <Topbar />
             <div className="profile">
                 <Sidebar />
@@ -29,6 +41,6 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

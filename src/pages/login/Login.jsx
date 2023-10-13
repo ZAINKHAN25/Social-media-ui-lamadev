@@ -20,6 +20,7 @@ export default function Login() {
             }).then(res => {
                 console.log(res);
                 setcongragulation("Account Sign in Succesfully done")
+                localStorage.setItem("loginperson", JSON.stringify(res.data._id));
                 setTimeout(() => navigate('/'), 3000)
             }).catch(err => {
                 seterrorpara("Your password or email is wrong")

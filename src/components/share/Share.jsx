@@ -6,9 +6,10 @@ export default function Share() {
     let [issharebuttontrue,setissharebtntrue] = useState(false);
     let [inputtxt,setinputtxt] = useState('');
     async function posthandler(){
+        const loginperson = JSON.parse(localStorage.getItem("loginperson"));
         try {
             const response = await axios.post(`https://social-media-app-with-mongo-db.vercel.app/posts/v1/`, {
-              userId: '64ef8a6cd458a56a1dc8cb6b', 
+              userId: loginperson, 
               desc: inputtxt
             }).then(res => {
                 console.log(res)
