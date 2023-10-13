@@ -38,6 +38,7 @@
     margin: auto;
     top: 150px;
     border: 3px solid white;
+    background-color: rgb(227, 227, 227);
 }
 
 .profileinfo{
@@ -53,4 +54,28 @@
 .profileinfodesc{
     font-weight: 300;
     padding: 10px 20px;
+}
+
+.profileinfoandfollowbtn{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5%;
+}
+
+.followorunfllowbtn{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight:700;
+    background-color: green;
+    margin-right: 20px;
+    color: white;
+    font-size: 18px;
+    transition: all .5s;
+}
+
+.followorunfllowbtn:hover{
+    background-color: rgb(0, 199, 0);
 }

@@ -4,23 +4,73 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 
-
-import './profile.css'
+import './profile.css';
 
 export default function Profile() {
     const loginperson = JSON.parse(localStorage.getItem("loginperson"));
     const navigate = useNavigate();
 
+    let [user, setuser] = useState('');
+    let [followorunfollowtxt, setfolloworunfollowtxt] = useState('');
+    let [followistrue, setfollowistrue] = useState(true)
+
     const id = useParams().id;
-    console.log(id);
-    
+
     useEffect(() => {
         if (loginperson === null) {
             navigate('/login');
         }
-    }, [loginperson]);
+
+        async function fetchuser() {
+            try {
+                const res = await axios.get(`https://social-media-app-with-mongo-db.vercel.app/user/v1/${id}`);
+                const userData = res.data;
+                setuser(userData);
+
+                if (userData.followers && userData.followers.includes(loginperson)) {
+                    setfolloworunfollowtxt("Unfollow");
+                } else {
+                    setfolloworunfollowtxt("Follow");
+                }
+
+                // Set followistrue based on the condition
+                setfollowistrue(loginperson !== userData._id);
+            } catch (error) {
+                if (error) {
+                    navigate('/*');
+                }
+            }
+        }
+
+        fetchuser();
+    }, [loginperson, id]);
+
+    async function followunfollowfoo() {
+        try {
+            if (followorunfollowtxt === "Follow") {
+                await axios.put(`https://social-media-app-with-mongo-db.vercel.app/user/v1/${user._id}/follower`, {
+                    userId: loginperson
+                }).then(response => {
+                    // Update the state and console log the response
+                    setfolloworunfollowtxt("Unfollow");
+                    console.log(response);
+                });
+            } else if (followorunfollowtxt === "Unfollow") {
+                await axios.put(`https://social-media-app-with-mongo-db.vercel.app/user/v1/${user._id}/unfollow`, {
+                    userId: loginperson
+                }).then(response => {
+                    // Update the state and console log the response
+                    setfolloworunfollowtxt("Follow");
+                    console.log(response);
+                });
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
@@ -30,12 +80,15 @@ export default function Profile() {
                 <div className="profileright">
                     <div className="profilerighttop">
                         <div className="profilecover">
-                            <img src="https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1nfGVufDB8fDB8fHww&w=1000&q=80" alt="" className="profilecoverimg" />
-                            <img src="https://www.wilsoncenter.org/sites/default/files/media/images/person/james-person-1.jpg" alt="" className="profileuserimage" />
+                            <img src={user.profilecoverimg || "https://i.pinimg.com/736x/2d/e8/82/2de882cd4f3992ada3d609e3a183f7a4.jpg"} alt="" className="profilecoverimg" />
+                            <img src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" alt="" className="profileuserimage" />
                         </div>
-                        <div className="profileinfo">
-                            <h4 className="profileinfoname">Ismail</h4>
-                            <span className="profileinfodesc">Hello i am Ismail ali shah class topper who is currently working in the Zain's office who was my school classmate and i don't take it serious but now he is my boss and i can't do anything Thank's</span>
+                        <div className="profileinfoandfollowbtn">
+                            <div className="profileinfo">
+                                <h4 className="profileinfoname">{user.username || "User name"} </h4>
+                                <span className="profileinfodesc">{user.description || "User description"}</span>
+                            </div>
+                            {followistrue && (<button onClick={followunfollowfoo} className="followorunfllowbtn">{followorunfollowtxt}</button>)}
                         </div>
                     </div>
                     <div className="profilerightbottom">
