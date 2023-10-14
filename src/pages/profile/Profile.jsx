@@ -93,7 +93,7 @@ export default function Profile() {
                     </div>
                     <div className="profilerightbottom">
                         <Feed />
-                        <Rightbar profile />
+                        <Rightbar followings={user.followings} profile />
                     </div>
                 </div>
             </div>
