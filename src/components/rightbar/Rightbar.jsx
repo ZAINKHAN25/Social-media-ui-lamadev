@@ -5,7 +5,7 @@ import './rightbar.css';
 import { Users } from '../../dummyData.js';
 import Online from '../online/Online.jsx';
 
-export default function Rightbar({ followings, profile }) {
+export default function Rightbar({ followings, profile, userinfoprop }) {
     const [userDataArray, setUserDataArray] = useState([]);
 
     useEffect(() => {
@@ -33,8 +33,19 @@ export default function Rightbar({ followings, profile }) {
         return (
             <>
                 <div className="birdthdaycontainer">
-                    {/* ... (your Homerightbar component content) */}
+                    <img className='birthdayimg' src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmlydGhkYXklMjBnaWZ0fGVufDB8fDB8fHww&w=1000&q=80" alt="" />
+                    <span className="birthdaytext">
+                        <b>Zain</b> and <b>3 other frinds</b> have birthday today
+                    </span>
                 </div>
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/013/057/701/small/ad-initial-letter-gold-calligraphic-feminine-floral-hand-drawn-heraldic-monogram-antique-vintage-style-luxury-logo-design-premium-vector.jpg" className='rightbarad' alt="" />
+                <h4 className="rightbartitle">Online Friends</h4>
+                <ul className="rightbarfriendlist">
+                    {Users.map(u => (
+                        <Online key={u.id} user={u} />
+                    ))}
+
+                </ul>
             </>
         );
     }
@@ -44,7 +55,18 @@ export default function Rightbar({ followings, profile }) {
             <>
                 <h4 className='rightbartitle'>User Information</h4>
                 <div className="rightbarinfo">
-                    {/* ... (your Profilerightbar component content) */}
+                <div className="rightbarinfoitem">
+                        <span className="rightbarinfokey">City: </span>
+                        <span className="rightbarinfovalue">{userinfoprop?.cityname || "Karachi"}</span>
+                    </div>
+                    <div className="rightbarinfoitem">
+                        <span className="rightbarinfokey">From:</span>
+                        <span className="rightbarinfovalue">{userinfoprop?.countryname || "Pakistan"}</span>
+                    </div>
+                    <div className="rightbarinfoitem">
+                        <span className="rightbarinfokey">Relationship:</span>
+                        <span className="rightbarinfovalue">Single</span>
+                    </div>
                 </div>
                 <h4 className='rightbartitle'>User Friends</h4>
                 <div className="rightbarfollowings">
