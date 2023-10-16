@@ -1,6 +1,8 @@
 import './post.css'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Post({ post }) {
@@ -37,14 +39,18 @@ export default function Post({ post }) {
         fetchuser()
     }, [])
 
+    const Navig = useNavigate()
+
     return (
         <div className='post'>
             <div className="postwrapper">
                 <div className="posttop">
-                    <div className="posttopleft">
+                    <div className="posttopleft" onClick={()=>{
+                         Navig(`/profile/${user.username}`)
+                    }}>
                         <img className='postprofileimg' src={user?.profilePicture || 'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png'} alt="" />
                         <span className="postusername">{user?.username}</span>
-                        <span className="postdate">{post?.date}</span>
+                        <span className="postdate">{post?.createdAt}</span>
                     </div>
                     <div className="posttopright">
                         <i className="fa-solid fa-ellipsis-vertical"></i>

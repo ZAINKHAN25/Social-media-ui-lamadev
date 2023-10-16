@@ -1,23 +1,39 @@
 import { useEffect, useState } from 'react';
-import Closefriends from '../closeFriends/Closefriends'
+import Closefriends from '../closeFriends/Closefriends';
 import './sidebar.css';
-// import {Users} from '../../dummyData.js'
 
 export default function Sidebar() {
-    let [users, setusers] = useState([])
-    useEffect(()=>{
-        async function getdata(){
-            try {
-                const user = await fetch('https://Social-media-app-with-mongo-db.vercel.app/user/v1/');
-                const realdata = await user.json();
-                setusers(realdata)
-            } catch (error) {
-                console.log(error);
-            }
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch('https://Social-media-app-with-mongo-db.vercel.app/user/v1/');
+                if (response.ok) {
+                    const data = await response.json();
+                    setUsers(data);
+                } else {
+                    setError('Failed to fetch data');
+                }
+            } catch (error) {
+                setError('An error occurred');
+            } finally {
+                setLoading(false);
+            }
         }
-        getdata()
-    },[])
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className='sidebar'>
@@ -59,11 +75,12 @@ export default function Sidebar() {
                 <button className="sidebarbutton">Show More</button>
                 <hr className='sidebarhr' />
                 <ul className="sidebarfriendlist">
-                    {users.map((u, i) => (
-                        <Closefriends key={i} user={u}/>
+                    {users.map((user) => (
+                        <Closefriends key={user.id} user={user} />
                     ))}
                 </ul>
+
             </div>
         </div>
-    )
+    );
 }
