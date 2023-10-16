@@ -20,7 +20,7 @@ export default function Profile() {
     const id = useParams().id;
 
     useEffect(() => {
-        if (loginperson === null) {
+        if (loginperson === null || loginperson === "") {
             navigate('/login');
         }
 
@@ -88,7 +88,9 @@ export default function Profile() {
                                 <h4 className="profileinfoname">{user.username || "User name"} </h4>
                                 <span className="profileinfodesc">{user.description || "User description"}</span>
                             </div>
-                            {followistrue && (<button onClick={followunfollowfoo} className="followorunfllowbtn">{followorunfollowtxt}</button>)}
+                            {followistrue === true ? (<button onClick={followunfollowfoo} className="followorunfllowbtn">{followorunfollowtxt}</button>) : (
+                                <i title="setting" class="fa-solid fa-gear"></i>
+                            )}
                         </div>
                     </div>
                     <div className="profilerightbottom">

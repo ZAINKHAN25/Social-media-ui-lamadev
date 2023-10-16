@@ -15,20 +15,21 @@ export default function Home() {
         if (loginperson === null) {
             navigate('/login');
         }
-    }, [loginperson]); // Add loginperson as a dependency
+        else if(loginperson === ""){
+            navigate('/login');
+        }
+    }, [loginperson]); 
 
     return (
         <>
-            {loginperson !== null && (
-                <div>
-                    <Topbar />
-                    <div className="homecontainer">
-                        <Sidebar />
-                        <Feed />
-                        <Rightbar />
-                    </div>
+            <div>
+                <Topbar />
+                <div className="homecontainer">
+                    <Sidebar />
+                    <Feed />
+                    <Rightbar />
                 </div>
-            )}
+            </div>
         </>
     );
 }

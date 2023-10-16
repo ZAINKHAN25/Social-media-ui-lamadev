@@ -1,7 +1,8 @@
 import './topbar.css'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 export default function Topbar() {
+    const navig = useNavigate()
     return (
         <div className='topbarcontainer'>
             <div className="topbarLeft">
@@ -35,6 +36,10 @@ export default function Topbar() {
                     </div>
                 </div>
                 <img src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" alt="" className="topbarimg" />
+                <i title='logout' onClick={()=>{
+                    localStorage.setItem("loginperson", JSON.stringify(''))
+                    navig('/login')
+                }} class="fa-solid fa-right-from-bracket"></i>
             </div>
         </div>
     )
