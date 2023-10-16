@@ -1,8 +1,24 @@
+import { useEffect, useState } from 'react';
 import Closefriends from '../closeFriends/Closefriends'
 import './sidebar.css';
-import {Users} from '../../dummyData.js'
+// import {Users} from '../../dummyData.js'
 
 export default function Sidebar() {
+    let [users, setusers] = useState([])
+    useEffect(()=>{
+        async function getdata(){
+            try {
+                const user = await fetch('https://Social-media-app-with-mongo-db.vercel.app/user/v1/');
+                const realdata = await user.json();
+                setusers(realdata)
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+        getdata()
+    },[])
+
     return (
         <div className='sidebar'>
             <div className="sidebarwrapper">
@@ -43,8 +59,8 @@ export default function Sidebar() {
                 <button className="sidebarbutton">Show More</button>
                 <hr className='sidebarhr' />
                 <ul className="sidebarfriendlist">
-                    {Users.map(u => (
-                        <Closefriends key={u.id} user={u}/>
+                    {users.map((u, i) => (
+                        <Closefriends key={i} user={u}/>
                     ))}
                 </ul>
             </div>

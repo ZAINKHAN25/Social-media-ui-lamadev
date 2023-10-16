@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import './rightbar.css';
-import { Users } from '../../dummyData.js';
+// import { Users } from '../../dummyData.js';
 import Online from '../online/Online.jsx';
 
 export default function Rightbar({ followings, profile, userinfoprop }) {
@@ -30,6 +30,20 @@ export default function Rightbar({ followings, profile, userinfoprop }) {
     }, [followings]);
 
     function Homerightbar() {
+        let [users, setusers] = useState([])
+        useEffect(() => {
+            async function getdata() {
+                try {
+                    const user = await fetch('https://Social-media-app-with-mongo-db.vercel.app/user/v1/');
+                    const realdata = await user.json();
+                    setusers(realdata)
+                } catch (error) {
+                    console.log(error);
+                }
+
+            }
+            getdata()
+        }, [])
         return (
             <>
                 <div className="birdthdaycontainer">
@@ -41,7 +55,7 @@ export default function Rightbar({ followings, profile, userinfoprop }) {
                 <img src="https://static.vecteezy.com/system/resources/thumbnails/013/057/701/small/ad-initial-letter-gold-calligraphic-feminine-floral-hand-drawn-heraldic-monogram-antique-vintage-style-luxury-logo-design-premium-vector.jpg" className='rightbarad' alt="" />
                 <h4 className="rightbartitle">Online Friends</h4>
                 <ul className="rightbarfriendlist">
-                    {Users.map(u => (
+                    {users.map(u => (
                         <Online key={u.id} user={u} />
                     ))}
 
@@ -55,7 +69,7 @@ export default function Rightbar({ followings, profile, userinfoprop }) {
             <>
                 <h4 className='rightbartitle'>User Information</h4>
                 <div className="rightbarinfo">
-                <div className="rightbarinfoitem">
+                    <div className="rightbarinfoitem">
                         <span className="rightbarinfokey">City: </span>
                         <span className="rightbarinfovalue">{userinfoprop?.cityname || "Karachi"}</span>
                     </div>
