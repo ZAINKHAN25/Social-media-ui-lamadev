@@ -34,7 +34,7 @@ export default function Topbar() {
                         <span className="topbariconbatch">13</span>
                     </div>
                 </div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl33XheDto8Y20nOIAA74-rYqO-T9y4eEloyZ2Tzea&s" alt="" className="topbarimg" />
+                <img src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" alt="" className="topbarimg" />
             </div>
         </div>
     )

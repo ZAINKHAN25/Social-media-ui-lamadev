@@ -36,6 +36,8 @@
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+    background-color: white;
+    border: 1.5px solid black;
     cursor: pointer;
 }
 
